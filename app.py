@@ -1,6 +1,15 @@
 from flask import Flask
-
+from random import randint
 app = Flask(__name__)
+
+ANSWER = randint(0, 9)
+
+@app.route('/<int:number>')
+def number_site(number):
+    if ANSWER == number:
+        return 'Grats'
+    else:
+        return 'Try'
 
 @app.route('/')
 def start():
